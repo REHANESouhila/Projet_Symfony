@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commentaires pour {{ etablissement.appellationOfficielle }}{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="mb-4">Commentaires pour {{ etablissement.appellationOfficielle }}</h1>
+
+        <a href="{{ path('ajouter_commentaire', {'etablissement': etablissement.id}) }}" class="btn btn-primary mb-3">
+            Ajouter un commentaire
+        </a>
+
+        {% if commentaires|length > 0 %}
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Auteur</th>
+                        <th>Date de création</th>
+                        <th>Note</th>
+                        <th>Commentaire</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for commentaire in commentaires %}
+                        <tr>
+                            <td>{{ commentaire.nomAuteur }}</td>
+                            <td>{{ commentaire.dateCreation|date('d/m/Y H:i') }}</td>
+                            <td>{{ commentaire.note }}</td>
+                            <td>{{ commentaire.texte }}</td>
+                            <td>
+                                <a href="{{ path('commentaire_modifier', {'id': commentaire.id}) }}" class="btn btn-info btn-sm">Modifier</a>
+                                <a href="{{ path('commentaire_confirmer_suppression', {'id': commentaire.id}) }}" class="btn btn-danger btn-sm">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="alert alert-warning">Aucun commentaire trouvé</p>
+        {% endif %}
+    </div>
+{% endblock %}

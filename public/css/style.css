@@ -1,0 +1,1009 @@
+/* Styles généraux */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f6;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Conteneur principal du formulaire */
+form {
+    background: linear-gradient(135deg, #ffffff, #f0f4f3);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+form:hover {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+/* Titre */
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-weight: 300;
+    position: relative;
+    animation: fadeInDown 0.7s ease;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    transform: translateX(-50%);
+}
+
+/* Styles des champs de formulaire */
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-control {
+    border: 1px solid #bdc3c7;
+    border-radius: 6px;
+    padding: 12px 15px;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+.form-control:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
+    outline: none;
+}
+
+/* Animation des labels */
+label {
+    color: #34495e;
+    transition: all 0.3s ease;
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-control:focus + label,
+.form-control:not(:placeholder-shown) + label {
+    color: #3498db;
+    transform: translateY(-25px) scale(0.85);
+}
+
+/* Carte */
+.map-container {
+    margin: 30px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+#map {
+    transition: all 0.3s ease;
+}
+
+#map:hover {
+    transform: scale(1.02);
+}
+
+/* Bouton de soumission */
+.btn-primary {
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    transition: all 0.4s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+    background: linear-gradient(to right, #2ecc71, #3498db);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .col-md-6 {
+        width: 100%;
+    }
+}
+
+/* Effets de hover sur les champs */
+.form-group:hover .form-control {
+    transform: scale(1.01);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Conteneur principal des détails */
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+/* Titre de la page */
+h1 {
+    font-weight: 400;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+/* Amélioration du bouton Retour */
+.btn-primary {
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    transition: all 0.4s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+    background: linear-gradient(to right, #2ecc71, #3498db);
+}
+
+/* Stylisation des colonnes */
+.row {
+    margin-bottom: 30px;
+}
+
+.col-md-6 p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: #34495e;
+}
+
+.col-md-6 p strong {
+    color: #3498db;
+}
+
+/* Style pour les tables */
+.table {
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.table th,
+.table td {
+    padding: 15px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table th {
+    background-color: #3498db;
+    color: white;
+}
+
+.table-striped tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Boutons de pagination */
+.btn-outline-primary {
+    border-color: #3498db;
+    color: #3498db;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+.btn-outline-primary:hover {
+    background-color: #3498db;
+    color: white;
+    border-color: #3498db;
+}
+
+.btn-secondary {
+    background-color: #2ecc71;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+.btn-secondary:hover {
+    background-color: #27ae60;
+    color: white;
+}
+
+/* Footer et autres boutons */
+.mt-3 {
+    margin-top: 20px;
+}
+
+/* Style global pour la carte */
+#map {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Titres centrés */
+h1.text-center {
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+/* Utiliser un fond léger pour la carte */
+.container {
+    background-color: #f4f7f6;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+/* Ajouter une bordure arrondie et une légère ombre sur la carte */
+#map {
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Pagination et éléments supplémentaires (si besoin) */
+.d-flex {
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Ajout de la classe map-container pour bien définir l'espace de la carte */
+.map-container {
+    position: relative;
+    width: 100%;  /* La carte prend toute la largeur disponible */
+    height: 400px; /* Hauteur fixe pour la carte */
+    border-radius: 12px; /* Coins arrondis */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Ombre pour un effet d'élévation */
+    margin-bottom: 30px;
+}
+
+/* Rendre la carte responsive pour petits écrans */
+@media (max-width: 768px) {
+    .map-container {
+        height: 300px; /* Moins de hauteur sur les petits écrans */
+    }
+}
+
+/* Styles pour le conteneur général */
+.container {
+    background-color: #f4f7f6; /* Fond légèrement gris pour toute la page */
+    padding: 30px;
+    border-radius: 12px;
+}
+
+/* Titres centrés */
+h1.text-center {
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+/* Si tu veux avoir un effet de transition lors du survol de la carte */
+#map:hover {
+    transform: scale(1.03);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Ajouter un padding et aligner le texte du titre */
+h1 {
+    padding-bottom: 20px;
+}
+
+/* Conteneur principal pour le formulaire */
+.comment-form-container {
+    background: linear-gradient(135deg, #ffffff, #f0f4f3);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+/* Effet au survol du formulaire */
+.comment-form-container:hover {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+/* Titre de la page */
+h1.text-center {
+    font-weight: 400;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+/* Bouton de soumission */
+.btn-primary {
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    transition: all 0.4s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+    background: linear-gradient(to right, #2ecc71, #3498db);
+}
+
+/* Bouton retour aux commentaires */
+.btn-secondary {
+    background-color: #2ecc71;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+.btn-secondary:hover {
+    background-color: #27ae60;
+    color: white;
+}
+
+/* Styles pour les champs du formulaire */
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-control {
+    border: 1px solid #bdc3c7;
+    border-radius: 6px;
+    padding: 12px 15px;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+.form-control:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
+    outline: none;
+}
+
+/* Animation des labels */
+label {
+    color: #34495e;
+    transition: all 0.3s ease;
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-control:focus + label,
+.form-control:not(:placeholder-shown) + label {
+    color: #3498db;
+    transform: translateY(-25px) scale(0.85);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .comment-form-container {
+        padding: 20px;
+    }
+
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        padding: 12px;
+    }
+}
+
+/* Styles généraux */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f6;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Conteneur principal */
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+/* Titre */
+h1.text-center {
+    font-weight: 400;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+/* Amélioration du bouton Retour */
+.btn-secondary {
+    background-color: #2ecc71;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.btn-secondary:hover {
+    background-color: #27ae60;
+    color: white;
+}
+
+/* Stylisation des colonnes */
+.row {
+    margin-bottom: 30px;
+}
+
+.col-md-6 p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: #34495e;
+}
+
+.col-md-6 p strong {
+    color: #3498db;
+}
+
+/* Table stylisée (si on souhaite l'ajouter) */
+.table {
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.table th,
+.table td {
+    padding: 15px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table th {
+    background-color: #3498db;
+    color: white;
+}
+
+.table-striped tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Pagination et éléments supplémentaires (si besoin) */
+.d-flex {
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Adaptation responsive */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .col-md-6 {
+        width: 100%;
+    }
+}
+/* Page de confirmation */
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+h1 {
+    font-weight: 400;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+.row {
+    margin-bottom: 20px;
+}
+
+.row p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: #34495e;
+}
+
+.row p strong {
+    color: #3498db;
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    border: none;
+    padding: 12px 30px;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+.btn-secondary {
+    background-color: #2ecc71;
+    border: none;
+    padding: 12px 30px;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #27ae60;
+    color: white;
+}
+/* Détails de l'établissement */
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+h1.text-center {
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.row {
+    margin-bottom: 20px;
+}
+
+.col-md-6 p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: #34495e;
+}
+
+.col-md-6 p strong {
+    color: #3498db;
+}
+
+.btn-primary {
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    transition: all 0.4s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+    background: linear-gradient(to right, #2ecc71, #3498db);
+}
+/* Améliorer les boutons sur les actions dans les tables */
+.table .btn-sm {
+    padding: 5px 12px;
+    font-size: 14px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.table .btn-sm:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Stylisation du texte des résultats de pagination */
+.pagination span {
+    font-size: 16px;
+    font-weight: 500;
+    color: #34495e;
+}
+
+/* Améliorer les marges et le padding dans les tables */
+.table th, .table td {
+    padding: 18px;
+    font-size: 14px;
+}
+
+.table th {
+    background-color: #3498db;
+    color: white;
+    text-align: center;
+}
+
+.table-striped tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #ecf0f1;
+}
+/* Styles généraux */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Formulaire de modification d'établissement */
+form {
+    background: linear-gradient(135deg, #ffffff, #f0f4f3);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+form:hover {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+/* Titre */
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-weight: 300;
+    position: relative;
+    animation: fadeInDown 0.7s ease;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    transform: translateX(-50%);
+}
+
+/* Style des champs du formulaire */
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-control {
+    border: 1px solid #bdc3c7;
+    border-radius: 6px;
+    padding: 12px 15px;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+.form-control:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
+    outline: none;
+}
+
+/* Labels */
+label {
+    color: #34495e;
+    transition: all 0.3s ease;
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-control:focus + label,
+.form-control:not(:placeholder-shown) + label {
+    color: #3498db;
+    transform: translateY(-25px) scale(0.85);
+}
+
+/* Carte */
+.map-container {
+    margin: 30px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+#map {
+    transition: all 0.3s ease;
+}
+
+#map:hover {
+    transform: scale(1.02);
+}
+
+/* Bouton de soumission */
+.btn-primary {
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    transition: all 0.4s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+    background: linear-gradient(to right, #2ecc71, #3498db);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .col-md-6 {
+        width: 100%;
+    }
+}
+
+/* Effets de hover sur les champs */
+.form-group:hover .form-control {
+    transform: scale(1.01);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+/* Styles généraux */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Conteneur pour les détails */
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre */
+h1.text-center {
+    font-weight: 400;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+/* Style pour les paragraphes dans les détails */
+.details-card p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: #34495e;
+}
+
+.details-card p strong {
+    color: #3498db;
+}
+
+/* Bouton Retour */
+.btn-secondary {
+    background-color: #2ecc71;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    transition: all 0.4s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #27ae60;
+    color: white;
+}
+
+/* Style pour les cartes de détails */
+.details-card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+/* Amélioration du bouton Retour */
+.btn-secondary {
+    background-color: #2ecc71;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+.btn-secondary:hover {
+    background-color: #27ae60;
+    color: white;
+}
+
+/* Titres centrés */
+h1.text-center {
+    font-weight: 500;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+}
+/* Styles généraux */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Conteneur principal */
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre principal */
+h1.text-center {
+    font-weight: 400;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+/* Tableau */
+.table {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+    width: 100%;
+}
+
+.table th, .table td {
+    padding: 15px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table th {
+    background-color: #3498db;
+    color: white;
+}
+
+.table-striped tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Pagination */
+.pagination {
+    margin-top: 20px;
+}
+
+.btn-outline-primary {
+    border-color: #3498db;
+    color: #3498db;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+.btn-outline-primary:hover {
+    background-color: #3498db;
+    color: white;
+    border-color: #3498db;
+}
+
+/* Boutons secondaires */
+.btn-secondary {
+    background-color: #2ecc71;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+.btn-secondary:hover {
+    background-color: #27ae60;
+    color: white;
+}
+
+/* Amélioration du bouton Retour */
+.btn-secondary {
+    background-color: #2ecc71;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+.btn-secondary:hover {
+    background-color: #27ae60;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .table {
+        font-size: 0.9rem;
+    }
+
+    .pagination {
+        flex-direction: column;
+    }
+}

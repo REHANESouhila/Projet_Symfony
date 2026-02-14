@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Établissements - Académie {{ academie }}{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="mb-4 text-center">Établissements dans l'académie {{ academie }}</h1>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Appellation Officielle</th>
+                        <th>Commune</th>
+                        <th>Département</th>
+                        <th>Région</th>
+                        <th>Académie</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for etablissement in etablissements %}
+                        <tr>
+                            <td>{{ etablissement.appellationOfficielle }}</td>
+                            <td>{{ etablissement.commune }}</td>
+                            <td>{{ etablissement.departement }}</td>
+                            <td>{{ etablissement.region }}</td>
+                            <td>{{ etablissement.academie }}</td>
+                            <td>
+                            <a href="{{ path('etablissement_detail_departement', {'code_departement': etablissement.departement, 'numero_uai': etablissement.numeroUai}) }}" class="btn btn-secondary btn-sm">Détails</a>
+                            <a href="{{ path('commentaires_etablissement', {'id': etablissement.id}) }}" class="btn btn-secondary btn-sm">Voir les commentaires</a>
+                            <a href="{{ path('modifier_etablissement', {'numero_uai': etablissement.numeroUai}) }}" class="btn btn-secondary btn-sm">Modifier</a> <!-- Bouton Modifier -->
+                            <a href="{{ path('confirmer_suppression', {'numero_uai': etablissement.numeroUai, 'source': 'departement'}) }}" class="btn btn-danger btn-sm">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="6" class="text-center">Aucun établissement trouvé</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="d-flex justify-content-between align-items-center mt-4">
+            <div>
+                {% if current_page > 1 %}
+                    <a href="{{ path('etablissements_par_academie', {'code_academie': academie, 'page': current_page - 1}) }}" class="btn btn-outline-primary">Précédent</a>
+                {% endif %}
+            </div>
+            <div>
+                Page {{ current_page }} sur {{ total_pages }}
+            </div>
+            <div>
+                {% if current_page < total_pages %}
+                    <a href="{{ path('etablissements_par_academie', {'code_academie': academie, 'page': current_page + 1}) }}" class="btn btn-outline-primary">Suivant</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

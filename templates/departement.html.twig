@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Établissements - Département {{ departement }}{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Établissements dans le département {{ departement }}</h1>
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Appellation Officielle</th>
+                        <th>Commune</th>
+                        <th>Département</th>
+                        <th>Région</th>
+                        <th>Académie</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for etablissement in etablissements %}
+                        <tr>
+                            <td>{{ etablissement.appellationOfficielle }}</td>
+                            <td>{{ etablissement.commune }}</td>
+                            <td>{{ etablissement.departement }}</td>
+                            <td>{{ etablissement.region }}</td>
+                            <td>{{ etablissement.academie }}</td>
+                            <td>
+                                <a href="{{ path('etablissement_detail_departement', {'code_departement': departement, 'numero_uai': etablissement.numeroUai}) }}" class="btn btn-secondary btn-sm">Détails</a>
+                                <a href="{{ path('commentaires_etablissement', {'id': etablissement.id}) }}" class="btn btn-secondary btn-sm">Voir les commentaires</a>
+                                <a href="{{ path('modifier_etablissement', {'numero_uai': etablissement.numeroUai}) }}" class="btn btn-secondary btn-sm">Modifier</a>
+                                <a href="{{ path('confirmer_suppression', {'numero_uai': etablissement.numeroUai, 'source': 'departement'}) }}" class="btn btn-danger btn-sm">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="6" class="text-center">Aucun établissement trouvé</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mt-4">
+            <div class="pagination">
+                {% if current_page > 1 %}
+                    <a href="{{ path('etablissements_par_departement', {'code_departement': departement, 'page': current_page - 1}) }}" class="btn btn-outline-primary">Précédent</a>
+                {% endif %}
+                <span>Page {{ current_page }} sur {{ total_pages }}</span>
+                {% if current_page < total_pages %}
+                    <a href="{{ path('etablissements_par_departement', {'code_departement': departement, 'page': current_page + 1}) }}" class="btn btn-outline-primary">Suivant</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

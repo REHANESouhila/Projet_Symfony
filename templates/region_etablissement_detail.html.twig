@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de l'établissement - {{ etablissement.appellationOfficielle }}{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Détails de l'établissement : {{ etablissement.appellationOfficielle }}</h1>
+
+        <div class="details-card">
+            <p><strong>Appellation Officielle :</strong> {{ etablissement.appellationOfficielle }}</p>
+            <p><strong>Commune :</strong> {{ etablissement.commune }}</p>
+            <p><strong>Département :</strong> {{ etablissement.departement }}</p>
+            <p><strong>Région :</strong> {{ etablissement.region }}</p>
+            <p><strong>Académie :</strong> {{ etablissement.academie }}</p>
+            <p><strong>Latitude :</strong> {{ etablissement.latitude }}</p>
+            <p><strong>Longitude :</strong> {{ etablissement.longitude }}</p>
+            <p><strong>État :</strong> {{ etablissement.etatEtablissementLibe.value }}</p>
+            <p><strong>Nature UAI :</strong> {{ etablissement.natureUai }}</p>
+            <p><strong>Nature Libellé :</strong> {{ etablissement.natureLibe }}</p>
+            <p><strong>Code Postal :</strong> {{ etablissement.codePostal }}</p>
+            <p><strong>Type de Contrat :</strong> {{ etablissement.typeContrat }}</p>
+            <p><strong>Libellé Type Contrat :</strong> {{ etablissement.libelleTypeContrat }}</p>
+            <p><strong>Code Ministère :</strong> {{ etablissement.codeMinistere }}</p>
+            <p><strong>Libellé Ministère :</strong> {{ etablissement.libelleMinistere }}</p>
+            <p><strong>Date d'Ouverture :</strong> {{ etablissement.dateOuverture|date('d/m/Y') }}</p>
+        </div>
+
+        <div class="d-flex justify-content-center mt-4">
+            <a href="{{ path('etablissements_par_region', {'code_region': region}) }}" class="btn btn-secondary">Retour à la région</a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tous les établissements{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Liste des établissements</h1>
+
+        <!-- Section de recherche par UAI -->
+        <div class="row mb-4">
+            <div class="col-md-6 offset-md-3">
+                <form action="{{ path('etablissements') }}" method="get" class="form-inline">
+                    <div class="input-group">
+                        <input type="text" name="uai" class="form-control" placeholder="Rechercher un établissement par UAI" value="{{ app.request.get('uai') }}">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">Rechercher</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Section de tri -->
+        <div class="row mb-4">
+            <div class="col-md-6 offset-md-3">
+                <div class="btn-group" role="group">
+                    <button class="btn btn-secondary" onclick="window.location.href='{{ path('etablissements', {'sortBy': 'departement'}) }}'">Trier par Département</button>
+                    <button class="btn btn-secondary" onclick="window.location.href='{{ path('etablissements', {'sortBy': 'region'}) }}'">Trier par Région</button>
+                    <button class="btn btn-secondary" onclick="window.location.href='{{ path('etablissements', {'sortBy': 'commune'}) }}'">Trier par Commune</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tableau des établissements -->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Appellation Officielle</th>
+                    <th>Commune</th>
+                    <th>Département</th>
+                    <th>Région</th>
+                    <th>Académie</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for etablissement in etablissements %}
+                    <tr>
+                        <td>{{ etablissement.appellationOfficielle }}</td>
+                        <td>{{ etablissement.commune }}</td>
+                        <td>{{ etablissement.departement }}</td>
+                        <td>{{ etablissement.region }}</td>
+                        <td>{{ etablissement.academie }}</td>
+                        <td>
+                          <a href="{{ path('etablissement_detail_departement', {'code_departement': etablissement.departement, 'numero_uai': etablissement.numeroUai}) }}" class="btn btn-secondary btn-sm">Détails</a>
+                          <a href="{{ path('commentaires_etablissement', {'id': etablissement.id}) }}" class="btn btn-secondary btn-sm">Voir les commentaires</a>
+                          <a href="{{ path('modifier_etablissement', {'numero_uai': etablissement.numeroUai}) }}" class="btn btn-secondary btn-sm">Modifier</a> <!-- Bouton Modifier -->
+                          <a href="{{ path('confirmer_suppression', {'numero_uai': etablissement.numeroUai, 'source': 'departement'}) }}" class="btn btn-danger btn-sm">Supprimer</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6">Aucun établissement trouvé</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            {% if current_page > 1 %}
+                <a href="{{ path('etablissements', {'page': current_page - 1}) }}">Précédent</a>
+            {% endif %}
+
+            Page {{ current_page }} sur {{ total_pages }}
+
+            {% if current_page < total_pages %}
+                <a href="{{ path('etablissements', {'page': current_page + 1}) }}">Suivant</a>
+            {% endif %}
+        </div>
+
+        <div class="text-center mt-4" align="center">
+            <a href="{{ path('etablissement_create') }}" class="btn btn-primary">Ajouter un établissement</a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Établissements - Région {{ region }}{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Établissements dans la région {{ region }}</h1>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Appellation Officielle</th>
+                        <th>Commune</th>
+                        <th>Département</th>
+                        <th>Région</th>
+                        <th>Académie</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for etablissement in etablissements %}
+                        <tr>
+                            <td>{{ etablissement.appellationOfficielle }}</td>
+                            <td>{{ etablissement.commune }}</td>
+                            <td>{{ etablissement.departement }}</td>
+                            <td>{{ etablissement.region }}</td>
+                            <td>{{ etablissement.academie }}</td>
+                            <td>
+                                <a href="{{ path('etablissement_detail_region', {'code_region': region, 'numero_uai': etablissement.numeroUai}) }}" class="btn btn-primary">Détails</a>
+                                <a href="{{ path('commentaires_etablissement', {'id': etablissement.id}) }}" class="btn btn-secondary">Voir les commentaires</a>
+                                <a href="{{ path('confirmer_suppression', {'numero_uai': etablissement.numeroUai, 'source': 'region'}) }}" class="btn btn-danger">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="6">Aucun établissement trouvé</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagination d-flex justify-content-between align-items-center">
+            {% if current_page > 1 %}
+                <a href="{{ path('etablissements_par_region', {'code_region': region, 'page': current_page - 1}) }}" class="btn btn-outline-primary">Précédent</a>
+            {% endif %}
+
+            <span>Page {{ current_page }} sur {{ total_pages }}</span>
+
+            {% if current_page < total_pages %}
+                <a href="{{ path('etablissements_par_region', {'code_region': region, 'page': current_page + 1}) }}" class="btn btn-outline-primary">Suivant</a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

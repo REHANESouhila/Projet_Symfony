@@ -1,0 +1,15 @@
+                                                    List of databases
+      Name      |  Owner   | Encoding | Locale Provider | Collate |  Ctype  | Locale | ICU Rules |   Access privileges   
+----------------+----------+----------+-----------------+---------+---------+--------+-----------+-----------------------
+ Symfony_projet | sl213616 | UTF8     | libc            | C.UTF-8 | C.UTF-8 |        |           | 
+ msf            | msf      | UTF8     | libc            | C.UTF-8 | C.UTF-8 |        |           | 
+ msf_test       | msf      | UTF8     | libc            | C.UTF-8 | C.UTF-8 |        |           | 
+ postgres       | postgres | UTF8     | libc            | C.UTF-8 | C.UTF-8 |        |           | 
+ sl213616       | sl213616 | UTF8     | libc            | C.UTF-8 | C.UTF-8 |        |           | 
+ squadro        | postgres | UTF8     | libc            | C.UTF-8 | C.UTF-8 |        |           | 
+ template0      | postgres | UTF8     | libc            | C.UTF-8 | C.UTF-8 |        |           | =c/postgres          +
+                |          |          |                 |         |         |        |           | postgres=CTc/postgres
+ template1      | postgres | UTF8     | libc            | C.UTF-8 | C.UTF-8 |        |           | =c/postgres          +
+                |          |          |                 |         |         |        |           | postgres=CTc/postgres
+(8 rows)
+

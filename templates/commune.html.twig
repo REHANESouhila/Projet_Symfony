@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Établissements - Commune {{ commune|capitalize }}{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Établissements dans la commune {{ commune|capitalize }}</h1>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Appellation Officielle</th>
+                    <th>Commune</th>
+                    <th>Département</th>
+                    <th>Région</th>
+                    <th>Académie</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for etablissement in etablissements %}
+                    <tr>
+                        <td>{{ etablissement.appellationOfficielle }}</td>
+                        <td>{{ etablissement.commune }}</td>
+                        <td>{{ etablissement.departement }}</td>
+                        <td>{{ etablissement.region }}</td>
+                        <td>{{ etablissement.academie }}</td>
+                        <td>
+                            <a href="{{ path('etablissement_detail_commune', {'commune': commune, 'numero_uai': etablissement.numeroUai}) }}" class="btn btn-primary">Détails</a>
+                            <a href="{{ path('commentaires_etablissement', {'id': etablissement.id}) }}" class="btn btn-secondary">Voir les commentaires</a>
+                            <a href="{{ path('confirmer_suppression', {'numero_uai': etablissement.numeroUai, 'source': 'commune'}) }}" class="btn btn-danger">Supprimer</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6" class="text-center">Aucun établissement trouvé</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="pagination d-flex justify-content-between align-items-center mt-4">
+            {% if current_page > 1 %}
+                <a href="{{ path('etablissements_par_commune', {'commune': commune, 'page': current_page - 1}) }}" class="btn btn-outline-primary">Précédent</a>
+            {% endif %}
+
+            <span>Page {{ current_page }} sur {{ total_pages }}</span>
+
+            {% if current_page < total_pages %}
+                <a href="{{ path('etablissements_par_commune', {'commune': commune, 'page': current_page + 1}) }}" class="btn btn-outline-primary">Suivant</a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

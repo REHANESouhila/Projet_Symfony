@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le commentaire{% endblock %}
+
+{% block body %}
+    <h1>Modifier le commentaire</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.nomAuteur) }}
+        {{ form_row(form.note) }}
+        {{ form_row(form.texte) }}
+        <button class="btn btn-primary" type="submit">Enregistrer les modifications</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('commentaires_etablissement', {'id': etablissement.id}) }}" class="btn btn-secondary mt-4">Retour à l'établissement {{ etablissement.appellationOfficielle }}</a>
+{% endblock %}

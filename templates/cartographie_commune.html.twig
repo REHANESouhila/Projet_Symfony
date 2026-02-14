@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cartographie des établissements - Commune {{ commune }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" /> <!-- Inclure votre style CSS personnalisé -->
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="text-center">Cartographie des établissements dans la commune {{ commune }}</h1>
+
+        <!-- Conteneur de la carte -->
+        <div class="map-container">
+            <div id="map" style="height: 400px;"></div>
+        </div>
+
+        <a href="{{ path('etablissements_par_commune', {'commune': commune}) }}" class="btn btn-primary mt-4">Retour à la commune</a>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
+
+    <script>
+        const draw_map = (data) => {
+            const map = L.map('map')
+                .fitBounds(data.map((d) => [d.lat, d.lon])) // Ajuste la vue de la carte en fonction des marqueurs
+                .addLayer(L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }));
+
+            // Ajouter un marqueur pour chaque établissement
+            data.forEach((etablissement) => {
+                L.marker([etablissement.lat, etablissement.lon])
+                    .addTo(map)
+                    .bindPopup("<b>" + etablissement.nom + "</b><br>" +
+                        "Commune: " + etablissement.commune + "<br>" +
+                        "Département: " + etablissement.departement);
+            });
+        };
+
+        const data = {{ data|json_encode|raw }}; // Injecter dynamiquement les données dans le JavaScript
+
+        draw_map(data);
+    </script>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Confirmer la suppression - {{ etablissement.appellationOfficielle }}{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Êtes-vous sûr de vouloir supprimer l'établissement {{ etablissement.appellationOfficielle }} ?</h1>
+
+        <div class="row">
+            <div class="col-md-6">
+                <p><strong>Commune :</strong> {{ etablissement.commune }}</p>
+                <p><strong>Département :</strong> {{ etablissement.departement }}</p>
+                <p><strong>Région :</strong> {{ etablissement.region }}</p>
+                <p><strong>Académie :</strong> {{ etablissement.academie }}</p>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center mt-4">
+            <form method="post" action="{{ path('supprimer_etablissement', {'numero_uai': etablissement.numeroUai, 'source': source}) }}">
+                <button type="submit" class="btn btn-danger mr-3">Confirmer la suppression</button>
+            </form>
+
+            {% set routeParams = {} %}
+            {% if source == 'departement' %}
+                {% set routeParams = {'code_departement': etablissement.getCodeDepartement()} %}
+            {% elseif source == 'academie' %}
+                {% set routeParams = {'code_academie': etablissement.getCodeAcademie()} %}
+            {% elseif source == 'region' %}
+                {% set routeParams = {'code_region': etablissement.getCodeRegion()} %}
+            {% elseif source == 'commune' %}
+                {% set routeParams = {'commune': etablissement.getCodeCommune()} %}
+            {% endif %}
+
+            <a href="{{ path('etablissements_par_' ~ source, routeParams) }}" class="btn btn-secondary">Annuler</a>
+        </div>
+    </div>
+{% endblock %}
